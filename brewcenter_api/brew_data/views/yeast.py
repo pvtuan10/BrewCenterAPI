@@ -5,12 +5,13 @@ from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from brew_data import models, serializers
+from brewcenter_api.accounts.auth import TokenAuthentication
 
 class YeastTypes(APIView):
     """
     Methods to Retrieve and Suggest new Yeast Types.
     """
-    authentication_classes = (JSONWebTokenAuthentication, )
+    authentication_classes = (JSONWebTokenAuthentication, TokenAuthentication)
     permission_classes = (IsAuthenticated, )
 
     def get(self, request):
@@ -24,7 +25,7 @@ class Yeast(APIView):
     """
     Methods to Retrieve and Suggest new Yeast strains.
     """
-    authentication_classes = (JSONWebTokenAuthentication, )
+    authentication_classes = (JSONWebTokenAuthentication, TokenAuthentication)
     permission_classes = (IsAuthenticated, )
 
     def get(self, request):

@@ -5,13 +5,14 @@ from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from brew_data import models, serializers
+from brewcenter_api.accounts.auth import TokenAuthentication
 
 
 class Countries(APIView):
     """
     View to retrieve all countries from the API
     """
-    authentication_classes = (JSONWebTokenAuthentication, )
+    authentication_classes = (JSONWebTokenAuthentication, TokenAuthentication)
     permission_classes = (IsAuthenticated, )
 
     def get(self, request):

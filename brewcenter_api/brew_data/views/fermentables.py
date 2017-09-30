@@ -5,13 +5,14 @@ from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from brew_data import models, serializers
+from brewcenter_api.accounts.auth import TokenAuthentication
 
 
 class FermentableTypes(APIView):
     """
     View to Retrieve Fermentable ingredient Types.
     """
-    authentication_classes = (JSONWebTokenAuthentication, )
+    authentication_classes = (JSONWebTokenAuthentication, TokenAuthentication)
     permission_classes = (IsAuthenticated, )
 
     def get(self, request):
@@ -26,7 +27,7 @@ class Fermentables(APIView):
     View to Retrieve all approved fermentables and Suggest new
     fermentables.
     """
-    authentication_classes = (JSONWebTokenAuthentication, )
+    authentication_classes = (JSONWebTokenAuthentication, TokenAuthentication)
     permission_classes = (IsAuthenticated, )
 
     def get(self, request):

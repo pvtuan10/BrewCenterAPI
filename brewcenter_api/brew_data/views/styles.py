@@ -5,13 +5,14 @@ from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from brew_data import models, serializers
+from brewcenter_api.accounts.auth import TokenAuthentication
 
 
 class Styles(APIView):
     """
     Methods to Retrieve and Suggest Beer Styles.
     """
-    authentication_classes = (JSONWebTokenAuthentication, )
+    authentication_classes = (JSONWebTokenAuthentication, TokenAuthentication)
     permission_classes = (IsAuthenticated, )
 
     def get(self, request):
